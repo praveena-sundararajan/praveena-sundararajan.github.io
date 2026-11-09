@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Chaser | Praveena Sundararajan</title>
+  <meta name="description" content="Portfolio of Praveena Sundararajan: business analysis, product management, data and responsible AI.">
+
+  <!-- Fonts: the same two fonts used in the LinkedIn banner -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       COLOURS: change these once and the whole site updates.
+       They match the LinkedIn banner.
+       ============================================================ */
+    :root {
+      --bg: #F1F4F3;        /* page background (soft mist) */
+      --bg-alt: #E3EBE9;    /* alternate section background (sage) */
+      --card: #FFFFFF;      /* card background */
+      --ink: #24403F;       /* main text (deep teal) */
+      --muted: #5F7B79;     /* secondary text */
+      --accent: #8FAE9F;    /* sage accent (lines, dots) */
+      --line: #D5E0DD;      /* thin borders */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a { color: var(--ink); }
+
+    /* Keeps content from stretching too wide on big screens */
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- Top navigation ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(241, 244, 243, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    nav .logo { font-weight: 500; text-decoration: none; }
+    nav ul { list-style: none; display: flex; gap: 24px; }
+    nav ul a { text-decoration: none; font-size: 0.92rem; color: var(--muted); }
+    nav ul a:hover { color: var(--ink); }
+
+    /* ---------- Hero (the first screen visitors see) ---------- */
+    .hero { padding: 96px 0 88px; }
+    .rule { width: 56px; height: 3px; background: var(--accent); margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 500; line-height: 1.2; }
+    .hero .focus { font-size: clamp(1.1rem, 2.4vw, 1.35rem); font-weight: 400; margin-top: 16px; }
+    .creds-line { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .chip {
+      font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 999px;
+      background: var(--card); border: 1px solid var(--accent); color: var(--ink); text-decoration: none;
+    }
+    a.chip.more { border-style: dashed; font-weight: 400; color: var(--muted); }
+    .hero .tagline { font-family: 'Lora', Georgia, serif; font-style: italic; color: var(--muted); margin-top: 10px; font-size: 1.1rem; }
+    .hero .intro { max-width: 620px; margin-top: 28px; color: var(--muted); }
+
+    /* Hero layout: text on the left, photo on the right */
+    .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; }
+    .photo {
+      width: 300px; height: 300px; border-radius: 50%;
+      object-fit: cover; display: block;
+      border: 4px solid var(--card);
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn {
+      display: inline-block; padding: 10px 22px; border-radius: 6px;
+      text-decoration: none; font-weight: 400; font-size: 0.95rem;
+      border: 1px solid var(--ink);
+    }
+    .btn.primary { background: var(--ink); color: #fff; }
+    .btn:hover { opacity: 0.85; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    section h2 { font-size: 1.6rem; font-weight: 500; margin-bottom: 8px; }
+    section .lead { color: var(--muted); margin-bottom: 32px; max-width: 620px; }
+
+    /* Experience timeline */
+    .job { border-left: 2px solid var(--accent); padding: 0 0 32px 24px; position: relative; }
+    .job::before {
+      content: ""; position: absolute; left: -7px; top: 8px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+    }
+    .job h3 { font-size: 1.1rem; font-weight: 500; }
+    .job .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
+    .job .ctx { font-family: 'Lora', Georgia, serif; font-style: italic; color: var(--muted); font-size: 0.95rem; margin-bottom: 8px; }
+    .job ul { padding-left: 18px; color: var(--muted); }
+    .job li { margin-bottom: 4px; }
+    .job li b { font-weight: 500; color: var(--ink); }
+    .job .sub { color: var(--ink); font-size: 0.92rem; font-weight: 400; margin: 10px 0 4px; }
+    .job .tools { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+    .job .tools b { font-weight: 500; color: var(--ink); }
+
+    /* Case study cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 10px; padding: 24px;
+    }
+    .card .tag { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .card h3 { font-size: 1.1rem; font-weight: 500; margin: 8px 0; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    .card.feature { padding: 0; overflow: hidden; }
+    .card.feature img { width: 100%; display: block; border-bottom: 1px solid var(--line); }
+    .card.feature .body { padding: 20px 24px 24px; }
+    .card .status { display: inline-block; margin-top: 14px; font-size: 0.85rem; font-style: italic; font-family: 'Lora', Georgia, serif; }
+
+    /* Credentials list */
+    .creds { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .cred { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+    .cred strong { font-weight: 500; display: block; }
+    .cred span { color: var(--muted); font-size: 0.9rem; }
+    .creds.edu { grid-template-columns: minmax(220px, 420px); }
+    /* Credential tile with an icon or badge on the left */
+    .cred.has-icon { display: flex; gap: 14px; align-items: flex-start; }
+    .cred .icon {
+      flex: 0 0 48px; width: 48px; height: 48px; border-radius: 50%;
+      background: var(--bg-alt); color: var(--ink); border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.02em;
+    }
+    .cred .badge { flex: 0 0 56px; width: 56px; height: 56px; object-fit: contain; }
+    .cred .proof { display: block; margin-top: 6px; font-size: 0.85rem; }
+    .cred .proof a { color: var(--ink); margin-right: 12px; }
+    .subhead { font-size: 1.05rem; font-weight: 500; margin: 28px 0 14px; }
+
+    /* Footer */
+    footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
+
+    /* On phones: hide the nav links to keep the top bar clean */
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .hero { padding: 64px 0 56px; }
+      /* On phones the photo sits above the text */
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .photo { width: 180px; height: 180px; order: -1; }
+    }
+    /* Case study page */
+    .cs { padding: 72px 0 40px; }
+    .cs .back { font-size: 0.9rem; color: var(--muted); text-decoration: none; }
+    .cs h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 500; line-height: 1.25; margin-top: 18px; }
+    .cs .meta { color: var(--muted); margin-top: 10px; }
+    .tldr { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 20px 24px; margin: 32px 0; }
+    .tldr p { margin-bottom: 6px; }
+    .cs h2 { font-size: 1.3rem; font-weight: 500; margin: 40px 0 10px; }
+    .cs p, .cs li { color: var(--muted); }
+    .cs ul { padding-left: 20px; }
+    .cs li { margin-bottom: 6px; }
+    .cs li b, .tldr b { color: var(--ink); font-weight: 500; }
+    .feat { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px; }
+    .feat div { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+    .feat strong { font-weight: 500; display: block; margin-bottom: 4px; }
+    .feat span { color: var(--muted); font-size: 0.93rem; }
+    video { width: 100%; border-radius: 10px; border: 1px solid var(--line); margin-top: 12px; background: #000; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="index.html">Praveena Sundararajan</a>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap cs">
+    <a class="back" href="index.html#work">← Back to selected work</a>
+    <h1>Dream Chaser: an AI job search assistant</h1>
+    <p class="meta">mosAI hackathon by Product Folks · October 2025 · Product MVP</p>
+
+    <div class="tldr">
+      <p><b>Problem:</b> Job seekers, especially those looking for roles abroad, juggle many job boards, rewrite their resume for every role, struggle to find employers that sponsor visas, and lose track of where they applied.</p>
+      <p><b>What we built:</b> one MVP that brings job search, AI resume optimisation, AI-assisted applications and application tracking into a single dashboard.</p>
+      <p><b>Why it matters:</b> it turns a scattered, manual process into one guided journey, so candidates spend their energy on the right roles instead of on admin.</p>
+    </div>
+
+    <h2>The problem</h2>
+    <p>Searching for a job today means switching between job boards, company sites and social media; tailoring a resume to pass applicant tracking systems for each role; and keeping track of applications, emails and interviews by hand. For international candidates there is one more hurdle: finding out which employers actually sponsor visas or support relocation, information that is rarely easy to find.</p>
+
+    <h2>What we built</h2>
+    <div class="feat">
+      <div><strong>Smart job search</strong><span>Search across sources with filters for experience, salary and job type, plus visa sponsorship detection.</span></div>
+      <div><strong>AI resume builder</strong><span>Tailors a resume to a specific job description and shows an ATS compatibility score with tips to improve it.</span></div>
+      <div><strong>Intelligent applications</strong><span>Applies to matching roles based on preferences, with cover letters personalised from the candidate's own story.</span></div>
+      <div><strong>Application analytics</strong><span>A dashboard of applications, interviews, offers and response rates, with AI insights on what is working.</span></div>
+      <div><strong>Email tracking</strong><span>Monitors a dedicated job search inbox to update application status automatically.</span></div>
+      <div><strong>Global opportunities</strong><span>Highlights roles with relocation support and visa sponsorship for candidates moving countries.</span></div>
+    </div>
+
+    <h2>Key product decisions</h2>
+    <ul>
+      <li><b>Visa sponsorship as a first-class filter,</b> not an afterthought, because for international candidates it decides whether a role is worth applying to at all.</li>
+      <li><b>Quality over volume in automated applications:</b> a daily application limit and preference settings, so automation targets the right roles rather than flooding employers.</li>
+      <li><b>Personal stories in cover letters:</b> the candidate writes their own story once, and the AI personalises from it, keeping a human voice in every application.</li>
+      <li><b>A dedicated job search inbox:</b> recommended so tracking stays organised and separate from personal email.</li>
+      <li><b>One dashboard for the whole journey,</b> so progress is visible in one place instead of scattered across tools.</li>
+    </ul>
+
+    <h2>Responsible AI: what I would strengthen next</h2>
+    <ul>
+      <li><b>Credentials:</b> the MVP's email setup asks for a password. A production version should rely only on secure OAuth sign-in and never store passwords.</li>
+      <li><b>Automated applications:</b> keep a human review step before anything is sent, respect job boards' terms of use, and make the daily limits a safeguard rather than a growth lever.</li>
+      <li><b>Honest resumes:</b> optimisation should rephrase and highlight real experience, never invent skills to beat an ATS.</li>
+      <li><b>Transparency:</b> explain how the ATS score and recommendations are calculated, so candidates can trust and question them.</li>
+      <li><b>Personal data:</b> resumes and inboxes hold sensitive information, so minimise what is stored and give users clear control to delete it.</li>
+    </ul>
+
+    <h2>Demo</h2>
+    <video controls preload="metadata" poster="dream-chaser-cover.jpg">
+      <source src="dream-chaser-demo.mp4" type="video/mp4">
+      Your browser can't play this video.
+    </video>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Praveena Sundararajan</div>
+  </footer>
+</body>
+</html>
